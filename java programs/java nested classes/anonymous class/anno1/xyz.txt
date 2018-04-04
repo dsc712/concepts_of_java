@@ -1,0 +1,6 @@
+Compiled from "Outer.java"
+class Outer$1 implements my {
+  final Outer this$0;
+  Outer$1(Outer);
+  public void show();
+}

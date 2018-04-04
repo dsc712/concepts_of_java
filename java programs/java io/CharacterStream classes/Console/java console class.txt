@@ -1,0 +1,22 @@
+Java Console Class  -->  fastest way of taking input from console
+---------------------
+
+The Java Console class is be used to get input from console. It provides methods to read texts and passwords.
+If you read password using Console class, it will not be displayed to the user.
+The java.io.Console class is attached with system console internally. The Console class is introduced since 1.5.
+
+
+
+Method	                                                     Description
+-------------------------------------------------------------------------------------------------------------------------------------------
+Reader reader()                         	          It is used to retrieve the reader object associated with the console
+String readLine()                        	          It is used to read a single line of text from the console.
+String readLine(String fmt, Object... args)	          It provides a formatted prompt then reads the single line of text from the console.
+char[] readPassword()	                              It is used to read password that is not being displayed on the console.
+char[] readPassword(String fmt, Object... args)       It provides a formatted prompt then reads the password that is not being displayed on the 
+                                                      console .   
+
+Console format(String fmt, Object... args)            It is used to write a formatted string to the console output stream.
+Console printf(String format, Object... args)	      It is used to write a string to the console output stream.
+PrintWriter writer()	                              It is used to retrieve the PrintWriter object associated with the console.
+void flush()	                                      It is used to flushes the console.

@@ -1,0 +1,12 @@
+Following are the fields for Java.io.StreamTokenizer class −
+
+double nval − If the current token is a number, this field contains the value of that number.
+String sval − If the current token is a word token, this field contains a string giving the characters of the word token.
+static int TT_EOF − A constant indicating that the end of the stream has been read.
+static int TT_EOL − A constant indicating that the end of the line has been read.
+static int TT_NUMBER − A constant indicating that a number token has been read.
+static int TT_WORD − A constant indicating that a word token has been read.
+int ttype − After a call to the nextToken method, this field contains the type of the token just read.
+
+
+23 , 44 

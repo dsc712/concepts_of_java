@@ -1,0 +1,5 @@
+Compiled from "MyEnum.java"
+class MyEnum {
+  MyEnum();
+  public static void main(java.lang.String[]);
+}

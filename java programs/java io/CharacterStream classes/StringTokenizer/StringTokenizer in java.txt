@@ -1,0 +1,25 @@
+------------------------
+StringTokenizer in Java
+------------------------
+The java.util.StringTokenizer class allows you to break a string into tokens. 
+It is simple way to break string.It doesn't provide the facility to differentiate
+numbers, quoted strings, identifiers etc. like StreamTokenizer class.
+
+------------------------------------------------------------------------------------------------------------------------------
+Constructor	                                                                 Description
+-------------------------------------------------------------------------------------------------------------------------------
+StringTokenizer(String str)	                                      creates StringTokenizer with specified string.
+StringTokenizer(String str, String delim)	                      creates StringTokenizer with specified string and delimeter.
+StringTokenizer(String str, String delim, boolean returnValue) 	  creates StringTokenizer with specified string, delimeter and return value.
+                                                                  If return value is true, delimiter characters are considered to be tokens. If it is false, delimiter characters serve to separate tokens.
+
+------------------------------------------------------------------------------------------------------------------------------
+Public method	                                                            Description
+-------------------------------------------------------------------------------------------------------------------------------
+
+boolean hasMoreTokens()	                                         checks if there is more tokens available.
+String nextToken()	                                             returns the next token from the StringTokenizer object.
+String nextToken(String delim)	                                 returns the next token based on the delimeter.
+boolean hasMoreElements()	                                     same as hasMoreTokens() method.
+Object nextElement()	                                         same as nextToken() but its return type is Object.
+int countTokens()	                                             returns the total number of tokens.

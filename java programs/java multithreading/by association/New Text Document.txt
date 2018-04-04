@@ -1,0 +1,37 @@
+class Thread1 extends Thread
+{
+  Thread1(String s)
+   {
+    super(s) ;
+     }
+   public void run()
+    {
+      for(int i = 1 ; i <=5 ; i++)
+       {
+        System.out.println(Thread.currentThread().getName()) ;  
+           
+         try{
+          Thread.sleep(2000) ;
+             }          
+          catch(Exception e)
+           { }
+        }
+        
+       System.out.println(Thread.currentThread().getName() + " is dead") ;
+     }
+}
+
+class OneClassMObject
+{
+  public static void main(String s[])
+  {
+    Thread1 t1 = new Thread1("thread1") ;
+    Thread1 t2 = new Thread1("thread2") ;
+    Thread1 t2 = new Thread1("thread3") ;
+    
+    t1.start() ;
+    t2.start() ;
+    t3.start() ;
+    }
+   
+}

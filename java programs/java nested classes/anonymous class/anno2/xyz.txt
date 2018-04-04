@@ -1,0 +1,9 @@
+Compiled from "Outer.java"
+class Outer {
+  int x;
+  static int y;
+  Outer();
+  void display(My);
+  public static void main(java.lang.String...);
+  static {};
+}

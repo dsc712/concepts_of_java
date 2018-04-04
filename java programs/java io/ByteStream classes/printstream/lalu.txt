@@ -1,0 +1,5 @@
+hi
+new line appended to lalu.txt through println 
+new line appended to lalu.txt through println 
+new line appended to lalu.txt through println 
+ File successfully created  

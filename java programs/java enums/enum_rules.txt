@@ -1,0 +1,38 @@
+
+* Some rules to be kept in mind about enumeration in java
+
+		1. After compilation enums are converted into class (can be seen using javap tool)
+		2. All enums have an ordinal value , which can be seen using ordinal() method .
+		3. Constructors can also be defined in constructors .
+		4. Abstract methods can also be defined for enums and each enum will have to override those 
+                   abstract method within it's declaration .
+
+Enumeration summary
+-------------------
+
+So when should you use enums? Any time you need a fixed set of constants, whose values are known at compile-time.
+That includes natural enumerated types (like the days of the week and suits in a card deck) as well as other sets
+where you know all possible values at compile time, such as choices on a menu, command line flags, and so on.
+It is not necessary that the set of constants in an enum type stays fixed for all time. In most of the situations,
+you can add new constants to an enum without breaking the existing codes.
+
+Properties:
+
+1 . Enums are type-safe!
+2 . Enums provide their namespace.
+3 . Whenever an enum is defined, a class that extends java.lang.Enum is created.
+    Hence, enum cannot extend another class or enum. The compiler also create an 
+    instance of the class for each constants defined inside the enum. The java.lang.Enum
+    has these methods:
+
+   public final String name();  // Returns the name of this enum constant, exactly as declared in its enum declaration.
+                               // You could also override the toString() to provide a more user-friendly description.
+   public String toString();    // Returns the name of this enum constant, as contained in the declaration.
+                                // This method may be overridden.
+   public final int ordinal();  // Returns the ordinal of this enumeration constant.
+
+All constants defined in an enum are public static final. Since they are static, they can be accessed
+ via EnumName.instanceName.
+
+You do not instantiate an enum, but rely the constants defined.
+Enums can be used in a switch-case statement, just like an int.

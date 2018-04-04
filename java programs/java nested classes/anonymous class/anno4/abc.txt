@@ -1,0 +1,4 @@
+Compiled from "Temp.java"
+final class Temp$1 implements My {
+  Temp$1();
+}
