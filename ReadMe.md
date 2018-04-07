@@ -1,6 +1,6 @@
 # Concepts of java ( decoded through programs )
 
-![java image](https://centerforcreativity.net/wp-content/uploads/2017/09/unnamed.png)
+![java image](./assets/img1.png)
 
 # About this repository
 
