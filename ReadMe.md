@@ -1,6 +1,6 @@
 # Concepts of java ( decoded through programs )
 
-![java image](./assets/img1.png)
+<img src="./assets/img1.png" alt="java image" width = "250" height = "250" />
 
 # About this repository
 
