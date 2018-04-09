@@ -1,0 +1,25 @@
+All the programs of ArrayList are valid in vector also . 
+
+Differences ( ArrayList vs Vector )
+===========
+Vectors are synchronized, ArrayLists are not.
+
+Data Growth Methods
+Use ArrayLists if there is no specific requirement to use Vectors.
+
+Synchronization
+---------------
+If multiple threads access an ArrayList concurrently then we must externally synchronize the block of code which modifies the list either structurally or simply modifies an element. Structural modification means addition or deletion of element(s) from the list. Setting the value of an existing element is not a structural modification.
+
+Collections.synchronizedList is normally used at the time of creation of the list to avoid any accidental unsynchronized access to the list.
+
+
+
+Data growth
+------------
+Internally, both the ArrayList and Vector hold onto their contents using an Array. When an element is inserted into an ArrayList or a Vector, the object will need to expand its internal array if it runs out of room. A Vector defaults to doubling the size of its array, while the ArrayList increases its array size by 50 percent.
+
+
+Vector has got one extra constructor -
+
+Vector(int capacity , int increment )  // it can be useful as you can decide how your data structure should grow in case of overflow 
