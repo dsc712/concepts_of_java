@@ -1,1 +1,13 @@
-ArrayList is not a synchronized collection hence it is not suitable to be used between multiple threads concurrently. If you want to use ArrayList like data-structure in a multi-threaded environment, then you need to either use new CopyonWriteArrayList or use Collections.synchronizedList() to create a synchronized List. Former is part of concurrent collection package and much more scalable than the second one, but only useful when there are many readers and only a few writes. Since a new copy of ArrayList is created every time a write happens, it can be overkill if used in a write-heavy environment. The second option is a strictly synchronized collection, much like Vector or Hashtable, but it's not scalable because once the number of the thread increases drastically, contention becomes a huge issue.
+ArrayList is not a synchronized collection hence it is not suitable to be used between multiple threads concurrently. If you want to use
+
+ArrayList like data-structure in a multi-threaded environment, then you need to either use new CopyonWriteArrayList or use
+
+Collections.synchronizedList() to create a synchronized List. Former is part of concurrent collection package and much more
+
+scalable than the second one, but only useful when there are many readers and only a few writes. Since a new copy of ArrayList
+
+is created every time a write happens, it can be overkill if used in a write-heavy environment. The second option is a strictly
+
+synchronized collection, much like Vector or Hashtable, but it's not scalable because once the number of the thread increases
+
+drastically, contention becomes a huge issue.
