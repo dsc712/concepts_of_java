@@ -1,0 +1,40 @@
+## IMPORTANT POINTS ABOUT ARRAYLIST
+   ===============================
+
+1) ArrayList is not a synchronized collection hence it is not suitable to be used between multiple threads concurrently. If you want to use ArrayList like data-structure in a multi-threaded environment, then you need to either use new CopyonWriteArrayList or use Collections.synchronizedList() to create a synchronized List. Former is part of concurrent collection package and much more scalable than the second one, but only useful when there are many readers and only a few writes. Since a new copy of ArrayList is created every time a write happens, it can be overkill if used in a write-heavy environment. The second option is a strictly synchronized collection, much like Vector or Hashtable, but it's not scalable because once the number of the thread increases drastically, contention becomes a huge issue.
+
+
+2) CopyOnWriteArrayList is recommended for the concurrent multi-threading environment as it is optimized for multiple concurrent reads and creates copy for the write operation. This was added in Tiger, aka JDK 1.5. It's part of java.util.concurrent package, along with ConcurrentHashMap and BlockingQueue.
+
+3) When ArrayList gets full it creates another array and uses System.arrayCopy() to copy all elements from one array to another array. This is where insertion takes a lot of time. 
+
+4) Iterator and ListIterator of Java ArrayList are fail-fast it means if ArrayList is structurally modified at any time after the Iterator is created, in any way except through the iterator's own remove or add methods, the Iterator will throw a ConcurrentModificationException. Thus, in the face of concurrent modification, the Iterator fails quickly and cleanly, that's why it’s called fail-fast.
+
+5) ConcurrentModificationException is not guaranteed and it only was thrown at best effort.
+6) If you are creating Synchronized List it’s recommended to create while creating an instance of underlying ArrayList to prevent accidental non-synchronized access to the list. 
+
+7) An application can increase the capacity of an ArrayList instance before adding a large number of elements using the ensureCapacity() operation. This may reduce the amount of incremental reallocation due to the incremental filling of ArrayList.
+
+
+ 
+
+8) The size(), isEmpty(), get(), set(), iterator(), and listIterator() operations run in constant time because ArrayList is based on Array but adding or removing an element is costly as compared to LinkedList.
+
+9) The ArrayList class is enhanced in Java 1.5 to support Generics which added extra type-safety on ArrayList. It’s recommended to use generics version of ArrayList to ensure that your ArrayList contains only specified the type of element and avoid any ClassCastException.
+
+10) Since ArrayList implements List interface it maintains insertion order of elements and also allow duplicates.
+
+11) If we set ArrayList reference to null in Java, all the elements of ArrayList become eligible for garbage collection in Java, provided there are no more strong reference exists for those objects.
+
+12) Always use isEmpty() method to check if ArrayList is empty or not, instead of using size() == 0 check. Former one is much more readable, as shown below
+if(!listOfItems.isEmpty(){
+    System.out.println("Starting order processing);
+}
+
+if(listOfOrders.size() != 0){
+    System.out.println("Order processing started);
+}
+
+13) From Java 5 Tiger, ArrayList was made parametrized and you should always use the generic version of this class. This prevents the classical error of insertion fish in the list of fruits, or insertion dice in the list of cards. When you use generics, those errors will be caught by the compiler. Consequently, it also prevents ClassCastException at runtime because compiler ensures right kind of object is stored and retrieved from Collection. It also removes the need of manual cast, as Java compiler automatically adds an implicit cast.  For beginners, understanding generics is the little bit tricky, but it's worth learning as no body use collection without generics nowadays.
+
+
