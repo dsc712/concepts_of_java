@@ -1,0 +1,62 @@
+Strong, Soft, and Weak References
+==================================
+
+To understand how the WeakHashMap works, we need to look at a WeakReference class – which is the basic construct for keys in the WeakHashMap implementation. In Java, we have three main types of references, which we’ll explain in the following sections.
+
+___________________________________________________________________________________________________
+
+
+1. Strong References
+   =================
+
+		The strong reference is the most common type of Reference that we use in our day to day programming:
+
+		------------------------
+		Integer prime = 1;
+
+		------------------------
+
+		The variable prime has a strong reference to an Integer object with value 1. Any object which has a
+		strong reference pointing to it is not eligible for GC.
+
+_____________________________________________________________________________________________________
+
+2. Soft References
+   ================
+
+		Simply put, an object that has a SoftReference pointing to it will not be garbage collected until the JVM absolutely needs memory.
+
+		Let’s see how we can create a SoftReference in Java:
+
+		---------------------------------------------------------------
+		Integer prime = 1;  
+		SoftReference<Integer> soft = new SoftReference<Integer>(prime); 
+		prime = null;
+		---------------------------------------------------------------
+
+		The prime object has a strong reference pointing to it.
+
+		Next, we are wrapping prime strong reference into a soft reference. After making that strong reference null,
+		a prime object is eligible for GC but will be collected only when JVM absolutely needs memory.
+
+__________________________________________________________________________________________________________
+3. Weak References
+   ===============
+
+The objects that are referenced only by weak references are garbage collected eagerly ,
+the GC won’t wait until it needs memory in that case.
+
+We can create a WeakReference in Java in the following way:
+
+----------------------------------------------------------------
+Integer prime = 1;  
+WeakReference<Integer> soft = new WeakReference<Integer>(prime); 
+prime = null;
+----------------------------------------------------------------
+
+When we made a prime reference null, the prime object will be garbage collected in the next GC cycle,
+as there is no other strong reference pointing to it.
+
+References of a WeakReference type are used as keys in WeakHashMap.
+
+_________________________________________________________________________________________________________   
