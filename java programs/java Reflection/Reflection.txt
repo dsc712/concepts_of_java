@@ -1,0 +1,179 @@
+Reflection 
+==========
+
+Java Reflection makes it possible to inspect classes, interfaces, fields and methods at runtime, without knowing the names of the classes, methods etc. at  runtime. It is also possible to instantiate new objects, invoke methods and get/set field values using reflection.
+
+Java Reflection is quite powerful and can be very useful. For instance, Java Reflection can be used to map properties in JSON files to getter / setter methods in Java objects, like Jackson, GSON, Boon etc. does. Or, Reflection can be used to map the column names of a JDBC ResultSet to getter / setter methods in a Java object.
+
+Using Java Reflection you can inspect Java classes at runtime. Inspecting classes is often the first thing you do when using Reflection. From the classes you can obtain information about
+
+1. Class Name
+2. Class Modifies (public, private, synchronized etc.)
+3. Package Info
+4. Superclass
+5. Implemented Interfaces
+6. Constructors
+7. Methods
+8. Fields
+9. Annotations
+
+
+
+
+
+
+
+** The Class object
+   ================
+
+Before you can do any inspection on a class you need to obtain its java.lang.Class object. All types in Java including the primitive types (int, long, float etc.) including arrays have an associated Class object. If you know the name of the class at compile time you can obtain a Class object like this:
+
+----------------------------------------------
+|    Class myObjectClass = MyObject.class      |
+----------------------------------------------
+
+If you don't know the name at compile time, but have the class name as a string at runtime, you can do like this:
+
+----------------------------------------------------------------------------------------------------------
+| String className = ... //obtain class name as string at runtime Class class = Class.forName(className); |
+----------------------------------------------------------------------------------------------------------
+
+When using the Class.forName() method you must supply the fully qualified class name. That is the class name including all package names. For instance, if MyObject is located in package com.dsc712.myapp then the fully qualified class name is com.dsc712.myapp.MyObject
+
+The Class.forName() method may throw a ClassNotFoundException if the class cannot be found on the classpath at runtime.
+
+
+
+
+
+
+
+
+**	Class Name
+	==========
+
+
+From a Class object you can obtain its name in two versions. The fully qualified class name (including package name) is obtained using the getName() method like this:
+
+    Class aClass = ... //obtain Class object. See prev. section
+    String className = aClass.getName();
+
+If you want the class name without the pacakge name you can obtain it using the getSimpleName() method, like this:
+
+    Class  aClass          = ... //obtain Class object. See prev. section
+    String simpleClassName = aClass.getSimpleName();
+
+
+
+
+
+
+
+Modifiers
+=========
+
+You can access the modifiers of a class via the Class object. The class modifiers are the keywords "public", "private", "static" etc. You obtain the class modifiers like this:
+
+  Class  aClass = ... //obtain Class object. See prev. section
+  int modifiers = aClass.getModifiers();
+The modifiers are packed into an int where each modifier is a flag bit that is either set or cleared. You can check the modifiers using these methods in the class java.lang.reflect.Modifier:
+
+    Modifier.isAbstract(int modifiers)
+    Modifier.isFinal(int modifiers)
+    Modifier.isInterface(int modifiers)
+    Modifier.isNative(int modifiers)
+    Modifier.isPrivate(int modifiers)
+    Modifier.isProtected(int modifiers)
+    Modifier.isPublic(int modifiers)
+    Modifier.isStatic(int modifiers)
+    Modifier.isStrict(int modifiers)
+    Modifier.isSynchronized(int modifiers)
+    Modifier.isTransient(int modifiers)
+    Modifier.isVolatile(int modifiers)
+
+
+
+
+
+
+Package Info
+============
+You can obtain information about the package from a Class object like this:
+
+Class  aClass = ... //obtain Class object. See prev. section
+Package package = aClass.getPackage();
+From the Package object you have access to information about the package like its name. You can also access information specified for this package in the Manifest file of the JAR file this package is located in on the classpath. For instance, you can specify package version numbers in the Manifest file. You can read more about the Package class here: java.lang.Package
+
+
+
+
+
+Superclass
+==========
+From the Class object you can access the superclass of the class. Here is how:
+
+Class superclass = aClass.getSuperclass();
+The superclass class object is a Class object like any other, so you can continue doing class reflection on that too.
+
+
+
+
+Implemented Interfaces
+======================
+It is possible to get a list of the interfaces implemented by a given class. Here is how:
+
+Class  aClass = ... //obtain Class object. See prev. section
+Class[] interfaces = aClass.getInterfaces();
+A class can implement many interfaces. Therefore an array of Class is returned. Interfaces are also represented by Class objects in Java Reflection.
+
+NOTE: Only the interfaces specifically declared implemented by a given class is returned. If a superclass of the class implements an interface, but the class doesn't specifically state that it also implements that interface, that interface will not be returned in the array. Even if the class in practice implements that interface, because the superclass does.
+
+To get a complete list of the interfaces implemented by a given class you will have to consult both the class and its superclasses recursively.
+
+
+
+
+Constructors
+============
+You can access the constructors of a class like this:
+
+--------------------------------------------------------
+| Constructor[] constructors = aClass.getConstructors(); |
+--------------------------------------------------------
+
+
+
+
+Method
+======
+You can access the methods of a class like this:
+
+----------------------------------------
+| Method[] method = aClass.getMethods(); |
+----------------------------------------
+
+
+
+
+Fields
+======
+You can access the fields (member variables) of a class like this:
+  -------------------------------------
+| Field[] method = aClass.getFields(); |
+  -------------------------------------
+
+
+
+
+
+Annotations
+===========
+You can access the class annotations of a class like this:
+
+-----------------------------------------------------
+| Annotation[] annotations = aClass.getAnnotations(); |
+-----------------------------------------------------
+
+
+
+
