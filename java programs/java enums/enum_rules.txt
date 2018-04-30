@@ -1,3 +1,9 @@
+* What enums are actually internally ? 
+ 
+  Each enum class is compiled as a class being a subclass of java.lang.Enum. 
+  Each enum constant becomes a static final constant within that class. 
+  Then, an array $VALUES is created with all of the enum constants, in order of declaration.
+
 
 * Some rules to be kept in mind about enumeration in java
 

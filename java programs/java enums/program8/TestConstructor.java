@@ -1,5 +1,5 @@
 enum UserStatus{
-	PENDING("P") , ACTIVE("A") , INACTIVE("I") , DELETED("D") ; // COMPILER CREATES INSTANCE FOR ALL THESE ENUMS
+	PENDING("P") , ACTIVE("A") , INACTIVE("I") , DELETED("D") ; // COMPILER CREATES INSTANCE FOR ALL THESE ENUM CONSTANTS
 	private String statusCode ;
 	private UserStatus(String s){
 		statusCode = s ;

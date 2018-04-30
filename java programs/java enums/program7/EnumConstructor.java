@@ -1,3 +1,8 @@
+/*
+   Notice that after each constant a value is present in parentheses.
+   This calls the constructor for that member to initialize the price
+   field for that member. Thus, each Apple constant has a different price.
+*/
 enum Apple{
 	A(10) , B(9) , C(12) , D(15) , E(8) ;  // these enum constants will create instances of Apple class
 	
