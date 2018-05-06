@@ -1,0 +1,45 @@
+// ARRAYSUB spoj 
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n , k ; 
+    cin>>n;
+    int a[n];
+    
+    for(int i = 0 ; i < n ; i++ ){
+        cin>>a[i] ;
+    }
+    
+    cin>>k ;
+    
+    int b[n-k+1] ;
+    
+    deque<int> Q(k) ;
+    for(int i = 0 ; i < k ; i++ ){
+        
+        while(!Q.empty() && a[i] >= a[Q.back()]){
+            Q.pop_back() ;
+        }
+        
+        Q.push_back(i) ;
+    }
+    
+    for (int i = k; i < n; i++) {
+       b[i-k] = a[Q.front()];
+       
+        while (!Q.empty() && a[i] >= a[Q.back()])  // if a[i] is greater than element at back of queue , pop the element from back till the condition satisfy
+          Q.pop_back();
+        while (!Q.empty() && Q.front() <= i-k) // if the element at front is less than i-k then it is no more relevant 
+          Q.pop_front();
+          
+    Q.push_back(i);
+    
+  }
+  
+  b[n-k] = a[Q.front()];
+  
+  for(int i = 0 ; i < n-k+1 ; i++ ){
+      cout<<b[i]<<" " ;
+  }
+}

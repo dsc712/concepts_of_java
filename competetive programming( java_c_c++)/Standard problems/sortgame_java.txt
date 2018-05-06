@@ -1,0 +1,70 @@
+import java.util.* ; 
+import java.io.* ; 
+
+class Pair implements Comparable< Pair >
+{
+    
+    String first ;
+    int second ; 
+    
+    Pair(String first , int second ){ 
+        
+        this.first = first ;
+        this.second = second ; 
+        
+    }
+    
+    public int compareTo(Pair p2){
+        
+        // if salaries are equal  - then sort name lexicographically
+        if(this.second == p2.second ){
+            
+          return ( this.first.compareTo(p2.first) );
+          
+        }
+        
+        // if salaries are not equal 
+        if( this.second > p2.second ){
+            return -1 ; 
+        }else if( this.second < p2.second ){
+            return 1 ;
+        }else{
+            return 0 ; 
+        }
+        
+    }
+}
+
+public class Main {
+    
+    static int min_salary , n , salary ; 
+    static String name ;
+    static List< Pair > emp = new ArrayList<>() ;
+   
+    
+    public static void main(String args[]) {
+     
+       Scanner sc = new Scanner(System.in) ;
+       min_salary = sc.nextInt() ; // no. of employees
+       n = sc.nextInt() ; // minimum salary which sanju has to consider 
+      
+       // getting employees data 
+       for(int i = 0 ; i < n ; i++ ){
+           name = sc.next() ;
+           salary = sc.nextInt() ;
+           Pair p = new Pair(name  , salary ) ;
+           emp.add(p) ;
+
+       }
+       
+       // sorting as asked 
+       Collections.sort(emp) ;
+       
+       // printing required result 
+       for(Pair p : emp ){
+           if(p.second >= min_salary )
+             System.out.println( p.first + " " + p.second  ) ;
+       }
+       
+    }
+}
