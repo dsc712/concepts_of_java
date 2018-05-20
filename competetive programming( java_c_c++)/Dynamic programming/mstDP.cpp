@@ -12,9 +12,9 @@ int dp[20000001] ;
 //     if(n <= 1)
 //         return 0 ; 
         
-//      int subOne ;
-//      int divTwo ;
-//      int divThree ;
+//      int subOne = INT_MAX ;
+//      int divTwo = INT_MAX ;
+//      int divThree = INT_MAX ;
      
 //      if(n >= 2)
 //       subOne = 1 + solveTopDown(n-1) ;
